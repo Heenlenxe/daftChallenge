@@ -100,12 +100,38 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 #| label: dag-1-1747
 #| echo: true
 
-# TODO: Replace this placeholder with your DAFT code
 # Create a DAG showing the 1747 understanding: Lemons → Scurvy Prevention
+import daft
+import matplotlib.pyplot as plt
 
-# Your code here - recreate the DAG from the reference image
-# Use DAFT to create nodes and edges that match the visual structure
-# Customize colors and styling to make it professional
+# Create a PGM object
+pgm = daft.PGM(dpi=150, alternate_style="outer")
+
+# Add nodes with professional styling
+pgm.add_node("lemons", "Lemons", 1, 1, aspect=3, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightyellow',
+                 'edgecolor': 'darkorange',
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+pgm.add_node("scurvy_prevention", "Scurvy", 3.25, 1, aspect=3, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightgreen',
+                 'edgecolor': 'darkgreen',
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+# Add edge from Lemons to Scurvy Prevention
+pgm.add_edge("lemons", "scurvy_prevention")
+
+# Render the DAG
+pgm.render()
+
+# Add title
+plt.title("Simplified Lind's Model (1747)", fontsize=14, fontweight='bold', pad=20)
 ```
 
 ### DAG 2: The Misguided Belief (Wrong Understanding)
@@ -121,12 +147,49 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 #| label: dag-2-misguided
 #| echo: true
 
-# TODO: Replace this placeholder with your DAFT code
-# Create a DAG showing the misguided belief: Acid → Bacteria Death → Scurvy Prevention
+# Create a DAG showing the misguided belief: Acid → Bacteria in Food → Scurvy
+import daft
+import matplotlib.pyplot as plt
 
-# Your code here - recreate the DAG from the reference image
-# This DAG should show the incorrect causal chain
-# Use different colors or styling to indicate this is the wrong understanding
+# Create a PGM object
+pgm = daft.PGM(dpi=150, alternate_style="outer")
+
+# Add nodes with professional styling
+# Using red/orange tones to indicate this is the wrong understanding
+# Layout: diagonal from top-left to bottom-right
+pgm.add_node("acid", "Acid", 1, 2, aspect=3, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightcoral',
+                 'edgecolor': 'darkred',
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+pgm.add_node("bacteria_food", "Bacteria\nin Food", 2.5, 1.5, aspect=3, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightpink',
+                 'edgecolor': 'crimson',
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+pgm.add_node("scurvy", "Scurvy", 4, 1, aspect=3, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightgreen',
+                 'edgecolor': 'darkgreen',
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+# Add edges from Acid to Bacteria in Food to Scurvy
+pgm.add_edge("acid", "bacteria_food")
+pgm.add_edge("bacteria_food", "scurvy")
+
+# Render the DAG
+pgm.render()
+
+# Add title
+plt.title("Updated Bacterial Theory (Late 19th Century)", fontsize=14, fontweight='bold', pad=20)
 ```
 
 ### DAG 3: The 1928 Understanding (Complete and Correct)
@@ -142,12 +205,48 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 #| label: dag-3-1928
 #| echo: true
 
-# TODO: Replace this placeholder with your DAFT code
-# Create a DAG showing the 1928 understanding: Vitamin C → Scurvy Prevention
+# Create a DAG showing the 1928 understanding: Vitamin C → Collagen Synthesis → Scurvy
+import daft
+import matplotlib.pyplot as plt
 
-# Your code here - recreate the DAG from the reference image
-# This should be the most complete and accurate representation
-# Use professional styling that would be suitable for a scientific publication
+# Create a PGM object
+pgm = daft.PGM(dpi=150, alternate_style="outer")
+
+# Add nodes with professional styling
+# Layout: diagonal from top-left to bottom-right
+pgm.add_node("vitamin_c", "Vitamin C", 1, 2, aspect=3, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightblue',
+                 'edgecolor': 'darkblue',
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+pgm.add_node("collagen_synthesis", "Collagen\nSynthesis", 2.5, 1.5, aspect=3, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightyellow',
+                 'edgecolor': 'darkorange',
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+pgm.add_node("scurvy", "Scurvy", 4, 1, aspect=3, scale=1.1,
+             plot_params={
+                 'facecolor': 'lightgreen',
+                 'edgecolor': 'darkgreen',
+                 'linewidth': 2,
+                 'alpha': 0.8,
+             })
+
+# Add edges from Vitamin C to Collagen Synthesis to Scurvy
+pgm.add_edge("vitamin_c", "collagen_synthesis")
+pgm.add_edge("collagen_synthesis", "scurvy")
+
+# Render the DAG
+pgm.render()
+
+# Add title
+plt.title("Simplified Modern Understanding (1930s onwards)", fontsize=14, fontweight='bold', pad=20)
 ```
 
 ## Student Requirements Section: Mastering DAFT Visualization {#student-analysis-section}
